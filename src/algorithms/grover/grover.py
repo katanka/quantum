@@ -5,9 +5,6 @@ import numpy as np
 from collections import Counter
 
 """
-        GROVER'S ALGORITHM
-        by Andrew Gleeson
-
         Grover's algorithm is a quantum algorithm which probabilistically finds an element in list given a condition
         function which returns 1 if the element matches the condition and 0 otherwise. Let the list have 2^n elements
         for some n, meaning each element has a unique n-bit ID. Grover's algorithm has two main elements: the oracle
@@ -129,13 +126,13 @@ def main():
     qvm = forest.Connection()
 
     num_qubits = 2
-    sol_index = 0
+    sol_index = 1
 
     p = grover(num_qubits, sol_index)
 
     print p
 
-    output = qvm.run(p, [0, 1, 2, 3], 20)
+    output = qvm.run(p, [i for i in range(num_qubits)], 20)
 
     print most_common(output)
 
